@@ -1,13 +1,20 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Manrope, Newsreader } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-sans',
+});
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
 });
 
 export const metadata: Metadata = {
@@ -45,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#090d16',
+  themeColor: '#101714',
   width: 'device-width',
   initialScale: 1,
 };
@@ -56,8 +63,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col bg-[#090d16] text-slate-100 font-sans selection:bg-teal-500/30 selection:text-white">
+    <html
+      lang="en"
+      className={`${manrope.variable} ${newsreader.variable} h-full antialiased selection:bg-[#72D8B0]/20 selection:text-[#F4F2EA]`}
+    >
+      <body className="min-h-full flex flex-col bg-[#101714] text-[#E5EAE6] font-sans antialiased">
         <Navbar />
         <main className="flex-1 w-full">{children}</main>
         <Footer />

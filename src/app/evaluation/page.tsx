@@ -7,16 +7,14 @@ import {
   benchmarkMetrics
 } from '@/data/evaluationData';
 import {
-  Activity,
   Award,
   ArrowRight,
-  ShieldAlert,
+  Info,
   CheckCircle2,
-  AlertTriangle,
-  FileText,
-  BarChart2,
   TrendingDown,
-  Info
+  Clock,
+  ShieldCheck,
+  FileSpreadsheet
 } from 'lucide-react';
 import { StatusBadge } from '@/components/StatusBadge';
 
@@ -28,116 +26,159 @@ export const metadata = {
 
 export default function EvaluationPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       <Breadcrumb items={[{ label: 'Evaluation & Benchmarks' }]} />
 
       {/* Header Intro */}
-      <div className="max-w-3xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold">
-          <Award className="w-3.5 h-3.5" />
+      <div className="max-w-3xl space-y-5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#17231F] border border-[#273830] text-[#72D8B0] text-xs font-mono tracking-wide">
+          <Award className="w-3.5 h-3.5 text-[#72D8B0]" />
           <span>Reproducible Benchmark Suite · Deviathon 2.0</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 className="text-display text-[#F4F2EA]">
           Empirical evaluation,{' '}
-          <span className="text-teal-400">separated from hype.</span>
+          <span className="font-serif italic text-[#A9C2AE] font-normal">separated from hype.</span>
         </h1>
 
-        <p className="text-base text-slate-300 leading-relaxed">
+        <p className="text-lg text-[#A9C2AE] leading-relaxed">
           Healthcare technology requires scientific honesty. We measure and report our platform’s
           performance on a controlled, reproducible test suite of 200 synthetic senior profiles tracked over
           90 simulated days (18,000 senior-days), comparing Sahaara’s combined engine against a conventional
           rules-only baseline.
         </p>
 
-        <div className="flex items-center gap-2 pt-1">
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           <StatusBadge status="Tested" />
-          <span className="text-xs text-slate-400 font-mono">
+          <span className="text-xs text-[#A9C2AE]/70 font-mono">
             Run ID: {evaluationDatasetMeta.runId} · Benchmark Seed: {evaluationDatasetMeta.seed}
           </span>
         </div>
       </div>
 
       {/* MANDATORY SCIENTIFIC DISCLAIMER CALLOUT */}
-      <div className="bg-teal-950/40 border border-teal-500/40 rounded-2xl p-5 flex items-start gap-3 text-xs text-teal-200 leading-relaxed shadow-xl">
-        <Info className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
-        <div>
-          <strong className="text-white text-sm block mb-1">
+      <div className="bg-[#17231F] border border-[#273830] rounded-2xl p-6 sm:p-7 flex items-start gap-4 text-xs text-[#A9C2AE] leading-relaxed">
+        <div className="w-8 h-8 rounded-lg bg-[#245B49]/30 border border-[#245B49]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#72D8B0]">
+          <Info className="w-4 h-4" />
+        </div>
+        <div className="space-y-1.5">
+          <strong className="text-[#F4F2EA] text-sm block font-medium">
             Mandatory Evaluation Boundary & Grounding:
           </strong>
-          {evaluationDatasetMeta.disclaimer}
+          <p className="text-[#A9C2AE] leading-relaxed text-xs">
+            {evaluationDatasetMeta.disclaimer}
+          </p>
         </div>
       </div>
+
+      {/* KEY TAKEAWAYS FOR DEVIATHON JUDGES */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-6 sm:p-7 rounded-2xl bg-[#17231F] border border-[#273830] space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-3xl font-extrabold text-[#72D8B0] font-mono tracking-tight">-77.8%</span>
+            <TrendingDown className="w-5 h-5 text-[#72D8B0]" />
+          </div>
+          <h4 className="font-semibold text-base text-[#F4F2EA]">Alarm Fatigue Eradicated</h4>
+          <p className="text-[#A9C2AE] text-xs leading-relaxed">
+            By shifting from static population cutoffs to rolling personal medians, false alarms dropped from 0.18 to 0.04 per senior-day. Coordinators are not overwhelmed with spurious noise.
+          </p>
+        </div>
+
+        <div className="p-6 sm:p-7 rounded-2xl bg-[#17231F] border border-[#273830] space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-3xl font-extrabold text-[#72D8B0] font-mono tracking-tight">+19.7 Hours</span>
+            <Clock className="w-5 h-5 text-[#72D8B0]" />
+          </div>
+          <h4 className="font-semibold text-base text-[#F4F2EA]">Earlier Lead Time</h4>
+          <p className="text-[#A9C2AE] text-xs leading-relaxed">
+            Cross-signal correlation detected gradual declines an average of 28.2 hours before an explicit threshold breach would have occurred, creating an actionable intervention window.
+          </p>
+        </div>
+
+        <div className="p-6 sm:p-7 rounded-2xl bg-[#17231F] border border-[#273830] space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-3xl font-extrabold text-[#72D8B0] font-mono tracking-tight">96.5%</span>
+            <ShieldCheck className="w-5 h-5 text-[#72D8B0]" />
+          </div>
+          <h4 className="font-semibold text-base text-[#F4F2EA]">Follow-Up Accountability</h4>
+          <p className="text-[#A9C2AE] text-xs leading-relaxed">
+            The integrated coordinator queue ensured that 96.5% of alerts were acknowledged, called, and resolved with mandatory clinical notes, closing the operational care loop.
+          </p>
+        </div>
+      </section>
 
       {/* BENCHMARK COMPARISON TABLE (RULES VS COMBINED) */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Comparative Benchmark
-          </h2>
-          <h3 className="text-2xl font-bold text-white mt-1">
+          </span>
+          <h2 className="text-headline text-[#F4F2EA] mt-1">
             Rules-Only Baseline vs. Sahaara Combined Engine
-          </h3>
-          <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
+          </h2>
+          <p className="text-sm text-[#A9C2AE] mt-1.5 max-w-2xl leading-relaxed">
             Evaluated on the exact same test dataset of 18,000 simulated senior-days with planted clinical scenarios and control routines.
           </p>
         </div>
 
-        <div className="w-full overflow-x-auto bg-[#0f172a] border border-slate-800 rounded-2xl shadow-xl">
+        <div className="w-full overflow-x-auto bg-[#17231F] border border-[#273830] rounded-2xl shadow-xl">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="border-b border-slate-800 bg-[#131d33] text-slate-300">
-                <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-[11px] min-w-[180px]">
+              <tr className="border-b border-[#273830] bg-[#101714]/80 text-[#F4F2EA]">
+                <th className="p-4 sm:p-5 font-semibold uppercase tracking-wider text-[11px] min-w-[180px]">
                   Evaluation Metric
                 </th>
-                <th className="p-4 font-semibold text-slate-400 min-w-[140px]">
+                <th className="p-4 font-medium text-[#A9C2AE] min-w-[140px]">
                   Rules-Only Baseline
                 </th>
-                <th className="p-4 font-bold text-teal-300 bg-teal-950/40 border-l border-r border-teal-500/30 min-w-[160px]">
+                <th className="p-4 font-bold text-[#72D8B0] bg-[#245B49]/20 border-l border-r border-[#273830] min-w-[160px]">
                   Sahaara Combined Engine
                 </th>
-                <th className="p-4 font-semibold text-emerald-400 min-w-[120px]">
+                <th className="p-4 font-semibold text-[#72D8B0] min-w-[120px]">
                   Measured Delta
                 </th>
-                <th className="p-4 font-semibold text-slate-400 min-w-[280px]">
+                <th className="p-4 font-medium text-[#A9C2AE] min-w-[280px]">
                   Clinical & Operational Interpretation
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/80">
+            <tbody className="divide-y divide-[#273830]">
               {benchmarkMetrics.map((item) => (
-                <tr key={item.metric} className="hover:bg-slate-900/50 transition-colors">
-                  <td className="p-4 sm:p-5 font-bold text-slate-200">{item.metric}</td>
-                  <td className="p-4 text-slate-400 font-mono">
+                <tr key={item.metric} className="hover:bg-[#202B26]/60 transition-colors">
+                  <td className="p-4 sm:p-5 font-semibold text-[#F4F2EA]">{item.metric}</td>
+                  <td className="p-4 text-[#A9C2AE] font-mono">
                     {item.rulesOnly}
                     {item.unit}
                   </td>
-                  <td className="p-4 font-bold text-teal-200 bg-teal-950/20 border-l border-r border-teal-500/30 font-mono">
+                  <td className="p-4 font-bold text-[#72D8B0] bg-[#245B49]/10 border-l border-r border-[#273830] font-mono">
                     {item.combinedEngine}
                     {item.unit}
                   </td>
-                  <td className="p-4 font-bold text-emerald-400 font-mono">{item.delta}</td>
-                  <td className="p-4 text-slate-400 leading-relaxed">{item.interpretation}</td>
+                  <td className="p-4 font-semibold text-[#72D8B0] font-mono">{item.delta}</td>
+                  <td className="p-4 text-[#A9C2AE] leading-relaxed">{item.interpretation}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div className="p-4 border-t border-slate-800 bg-slate-900/60 text-[11px] text-slate-400">
-            <strong>Sample Size & Scope:</strong> Denominator = 200 synthetic senior profiles over 90 days (18,000 senior-days; 324,000 time-series events). Evaluated using fixed seed 42.
+          <div className="p-4 border-t border-[#273830] bg-[#101714]/60 text-[11px] text-[#A9C2AE]/80 flex items-center justify-between flex-wrap gap-2">
+            <span>
+              <strong className="text-[#F4F2EA]">Sample Size & Scope:</strong> Denominator = 200 synthetic senior profiles over 90 days (18,000 senior-days; 324,000 time-series events). Evaluated using fixed seed 42.
+            </span>
+            <span className="font-mono text-[#72D8B0]">Deterministic Seeds: Fixed</span>
           </div>
         </div>
       </section>
 
       {/* DATASET COMPOSITION (PLANTED SCENARIOS) */}
-      <section className="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+      <section className="bg-[#17231F] border border-[#273830] rounded-3xl p-6 sm:p-8 space-y-6">
         <div>
-          <span className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Dataset Architecture
           </span>
-          <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+          <h3 className="text-headline text-[#F4F2EA] mt-1">
             Planted Ground-Truth Scenario Distribution
           </h3>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-sm text-[#A9C2AE] mt-1.5 max-w-3xl leading-relaxed">
             The synthetic benchmark is structured to test both acute emergencies and subtle multi-signal gradual declines while challenging the system with noisy festival data.
           </p>
         </div>
@@ -146,18 +187,18 @@ export default function EvaluationPage() {
           {scenarioDistributions.map((dist) => (
             <div
               key={dist.scenarioType}
-              className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2"
+              className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-3"
             >
               <div className="flex items-center justify-between">
-                <span className="font-bold text-slate-200">{dist.scenarioType}</span>
-                <span className="font-mono text-teal-400 font-semibold px-2 py-0.5 rounded bg-slate-800">
+                <span className="font-semibold text-sm text-[#F4F2EA]">{dist.scenarioType}</span>
+                <span className="font-mono text-[#72D8B0] text-xs font-semibold px-2 py-0.5 rounded-full bg-[#17231F] border border-[#273830]">
                   {dist.proportion}
                 </span>
               </div>
-              <div className="text-[11px] text-slate-400">
-                Cohort count: <strong className="text-slate-200">{dist.count} Seniors</strong>
+              <div className="text-[11px] text-[#A9C2AE]">
+                Cohort count: <strong className="text-[#F4F2EA]">{dist.count} Seniors</strong>
               </div>
-              <p className="text-slate-400 text-xs leading-relaxed pt-1 border-t border-slate-800">
+              <p className="text-[#A9C2AE] text-xs leading-relaxed pt-2 border-t border-[#273830]">
                 {dist.description}
               </p>
             </div>
@@ -165,45 +206,18 @@ export default function EvaluationPage() {
         </div>
       </section>
 
-      {/* KEY TAKEAWAYS FOR DEVIATHON JUDGES */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-        <div className="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 space-y-3">
-          <div className="text-2xl font-extrabold text-teal-400 font-mono">-77.8%</div>
-          <h4 className="font-bold text-sm text-white">Alarm Fatigue Eradicated</h4>
-          <p className="text-slate-400 leading-relaxed">
-            By shifting from population cutoffs to rolling personal medians, false alarms dropped from 0.18 to 0.04 per senior-day. Coordinators are not overwhelmed with spurious noise.
-          </p>
-        </div>
-
-        <div className="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 space-y-3">
-          <div className="text-2xl font-extrabold text-teal-400 font-mono">+19.7 Hours</div>
-          <h4 className="font-bold text-sm text-white">Earlier Lead Time</h4>
-          <p className="text-slate-400 leading-relaxed">
-            Cross-signal correlation detected gradual declines an average of 28.2 hours before an explicit threshold breach would have occurred, creating an actionable intervention window.
-          </p>
-        </div>
-
-        <div className="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 space-y-3">
-          <div className="text-2xl font-extrabold text-teal-400 font-mono">96.5%</div>
-          <h4 className="font-bold text-sm text-white">Follow-Up Accountability</h4>
-          <p className="text-slate-400 leading-relaxed">
-            The integrated coordinator queue ensured that 96.5% of alerts were acknowledged, called, and resolved with mandatory notes, closing the operational care loop.
-          </p>
-        </div>
-      </section>
-
       {/* Bottom CTA */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[#273830] text-xs">
         <Link
           href="/trust-and-safety"
-          className="text-teal-400 font-semibold hover:underline flex items-center gap-1.5"
+          className="text-[#72D8B0] font-medium hover:underline flex items-center gap-1.5"
         >
           <span>Next: Privacy, Security & Safety Policies</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
         <Link
           href="/demo"
-          className="text-slate-400 hover:text-slate-200 transition-colors"
+          className="text-[#A9C2AE] hover:text-[#F4F2EA] transition-colors"
         >
           Test Benchmark Scenarios in Live Simulator →
         </Link>
@@ -211,3 +225,4 @@ export default function EvaluationPage() {
     </div>
   );
 }
+

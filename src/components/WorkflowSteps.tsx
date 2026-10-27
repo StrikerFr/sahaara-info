@@ -5,11 +5,7 @@ import {
   Search,
   FileText,
   UserCheck,
-  CheckCircle,
-  ShieldCheck,
-  RefreshCw,
-  BellRing,
-  Award
+  CheckCircle2
 } from 'lucide-react';
 
 interface WorkflowStepsProps {
@@ -27,7 +23,7 @@ export const WorkflowSteps: React.FC<WorkflowStepsProps> = ({ mode = 'six-step' 
     {
       num: '02',
       title: 'Build Personal Context',
-      desc: 'Compute expected 14-30 day baseline distributions instead of applying one-size-fits-all population cutoffs.',
+      desc: 'Compute expected 14–30 day baseline distributions instead of applying one-size-fits-all population cutoffs.',
       icon: Brain
     },
     {
@@ -52,7 +48,7 @@ export const WorkflowSteps: React.FC<WorkflowStepsProps> = ({ mode = 'six-step' 
       num: '06',
       title: 'Track the Outcome',
       desc: 'Document call notes, agreed follow-up tasks, case resolution, and record immutable audit history.',
-      icon: CheckCircle
+      icon: CheckCircle2
     }
   ];
 
@@ -79,7 +75,7 @@ export const WorkflowSteps: React.FC<WorkflowStepsProps> = ({ mode = 'six-step' 
       step: 4,
       title: 'Personal Baseline Engine',
       actor: 'Statistical Worker',
-      desc: 'Calculates rolling 14-30 day medians and interquartile ranges (IQR). Categorises baseline as Provisional (<14d), Medium (14-29d), or High Confidence (30d+).'
+      desc: 'Calculates rolling 14–30 day medians and interquartile ranges (IQR). Categorises baseline as Provisional (<14d), Medium (14–29d), or High Confidence (30d+).'
     },
     {
       step: 5,
@@ -121,24 +117,24 @@ export const WorkflowSteps: React.FC<WorkflowStepsProps> = ({ mode = 'six-step' 
 
   if (mode === 'six-step') {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sixSteps.map((step) => {
           const IconComponent = step.icon;
           return (
             <div
               key={step.num}
-              className="p-5 rounded-2xl bg-[#0f172a] border border-slate-800 hover:border-teal-500/40 transition-all group"
+              className="p-6 rounded-2xl bg-[#17231F] border border-[#273830] hover:border-[#385145] transition-colors group flex flex-col justify-between"
             >
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-xs font-bold text-teal-400 bg-teal-950/60 border border-teal-500/30 px-2 py-0.5 rounded">
-                  {step.num}
-                </span>
-                <div className="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-teal-500/10 group-hover:text-teal-400 flex items-center justify-center text-slate-400 transition-colors">
-                  <IconComponent className="w-4 h-4" />
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-semibold text-[#A9C2AE] bg-[#202B26] border border-[#2D3E35] px-2 py-0.5 rounded">
+                    {step.num}
+                  </span>
+                  <IconComponent className="w-4 h-4 text-[#72D8B0]" />
                 </div>
+                <h4 className="font-bold text-sm text-[#F4F2EA] mb-2">{step.title}</h4>
+                <p className="text-xs text-[#95A49B] leading-relaxed">{step.desc}</p>
               </div>
-              <h4 className="font-bold text-sm text-white mb-1.5">{step.title}</h4>
-              <p className="text-xs text-slate-400 leading-relaxed">{step.desc}</p>
             </div>
           );
         })}
@@ -147,23 +143,23 @@ export const WorkflowSteps: React.FC<WorkflowStepsProps> = ({ mode = 'six-step' 
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {tenSteps.map((s) => (
         <div
           key={s.step}
-          className="p-4 sm:p-5 rounded-xl bg-[#0f172a] border border-slate-800 flex flex-col sm:flex-row items-start gap-4 hover:border-slate-700 transition-colors"
+          className="p-5 rounded-xl bg-[#17231F] border border-[#273830] flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-[#385145] transition-colors"
         >
-          <div className="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-400 font-mono font-bold text-xs flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-[#202B26] border border-[#2D3E35] text-[#72D8B0] font-mono font-bold text-xs flex items-center justify-center shrink-0">
             {s.step < 10 ? `0${s.step}` : s.step}
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-2 mb-1">
-              <h4 className="font-bold text-sm text-slate-200">{s.title}</h4>
-              <span className="text-[10px] font-medium px-2 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700 font-mono">
-                Actor: {s.actor}
+              <h4 className="font-bold text-sm text-[#F4F2EA]">{s.title}</h4>
+              <span className="text-[11px] font-mono px-2 py-0.2 rounded bg-[#202B26] text-[#A9C2AE] border border-[#2D3E35]">
+                {s.actor}
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">{s.desc}</p>
+            <p className="text-xs text-[#95A49B] leading-relaxed">{s.desc}</p>
           </div>
         </div>
       ))}

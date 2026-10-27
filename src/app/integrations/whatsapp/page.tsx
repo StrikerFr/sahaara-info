@@ -57,7 +57,7 @@ export default function WhatsAppIntegrationPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       <Breadcrumb
         items={[
           { label: 'Technology', href: '/technology' },
@@ -66,115 +66,115 @@ export default function WhatsAppIntegrationPage() {
       />
 
       {/* Header Intro */}
-      <div className="max-w-3xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold">
-          <MessageSquare className="w-3.5 h-3.5" />
+      <div className="max-w-3xl space-y-5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#17231F] border border-[#273830] text-[#72D8B0] text-xs font-mono tracking-wide">
+          <MessageSquare className="w-3.5 h-3.5 text-[#72D8B0]" />
           <span>Meta Cloud API Webhook Architecture</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 className="text-display text-[#F4F2EA]">
           Two-way WhatsApp communication,{' '}
-          <span className="text-teal-400">grounded in verification.</span>
+          <span className="font-serif italic text-[#A9C2AE] font-normal">grounded in verification.</span>
         </h1>
 
-        <p className="text-base text-slate-300 leading-relaxed">
+        <p className="text-lg text-[#A9C2AE] leading-relaxed">
           Seniors and families in India live on WhatsApp. Sahaara integrates the official Meta WhatsApp
           Cloud API to enable accessible morning check-ins and conversational reports, protected by
           cryptographic HMAC webhook verification, sender whitelisting, and strict human review.
         </p>
 
-        <div className="flex items-center gap-2 pt-1">
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           <StatusBadge status="Planned" />
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-[#A9C2AE]/70 font-mono">
             Sandbox tested with Meta Developer test numbers · Production deployment requires Meta Business verification
           </span>
         </div>
       </div>
 
       {/* INBOUND MESSAGE PIPELINE (9 STEPS) */}
-      <section className="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+      <section className="bg-[#17231F] border border-[#273830] rounded-3xl p-6 sm:p-8 space-y-6">
         <div>
-          <span className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Inbound Flow Architecture
           </span>
-          <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+          <h2 className="text-headline text-[#F4F2EA] mt-1">
             How Incoming WhatsApp Messages Are Processed
-          </h3>
-          <p className="text-xs text-slate-400 mt-1">
+          </h2>
+          <p className="text-sm text-[#A9C2AE] mt-1.5 max-w-2xl leading-relaxed">
             Every incoming text is authenticated and validated before it can influence a senior’s record.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 1</span>
-            <div className="font-bold text-slate-200">Message Dispatched</div>
-            <p className="text-slate-400">
-              Senior or authorised family member sends text ("Theek hoon" or "Mummy is dizzy") to care number.
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 01</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Message Dispatched</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
+              Senior or authorised family member sends text (&ldquo;Theek hoon&rdquo; or &ldquo;Mummy is dizzy&rdquo;) to care number.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 2</span>
-            <div className="font-bold text-slate-200">Meta Webhook Ingestion</div>
-            <p className="text-slate-400">
-              Meta Graph API fires HTTPS POST event payload to `/api/webhooks/whatsapp`.
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 02</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Meta Webhook Ingestion</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
+              Meta Graph API fires HTTPS POST event payload to <code className="text-[#72D8B0] font-mono">/api/webhooks/whatsapp</code>.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 3</span>
-            <div className="font-bold text-slate-200">HMAC SHA-256 Verification</div>
-            <p className="text-slate-400">
-              Application validates `X-Hub-Signature-256` using server-side `META_APP_SECRET`. Spoofed payloads rejected with 403.
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 03</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">HMAC SHA-256 Verification</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
+              Application validates <code className="text-[#72D8B0] font-mono">X-Hub-Signature-256</code> using server-side secret. Spoofed payloads rejected with 403.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 4</span>
-            <div className="font-bold text-slate-200">Sender Whitelist Matching</div>
-            <p className="text-slate-400">
-              Sender’s E.164 phone number is matched against `AuthorisedContact` table. Unauthorised numbers are rejected.
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 04</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Sender Whitelist Matching</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
+              Sender’s E.164 phone number is matched against <code className="text-[#72D8B0] font-mono">AuthorisedContact</code> table. Unauthorised numbers are rejected.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 5</span>
-            <div className="font-bold text-slate-200">Unambiguous Profile Linking</div>
-            <p className="text-slate-400">
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 05</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Unambiguous Profile Linking</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
               Associates event with senior ID only when sender relationship is verified in database records.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 6</span>
-            <div className="font-bold text-slate-200">Candidate Extraction</div>
-            <p className="text-slate-400">
-              NLP worker extracts candidate observation entities: [symptom, appetite, onset] with extraction confidence.
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 06</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Candidate Extraction</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
+              NLP worker extracts candidate observation entities: [symptom, appetite, onset] with extraction confidence score.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 7</span>
-            <div className="font-bold text-slate-200">Human Coordinator Review</div>
-            <p className="text-slate-400">
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 07</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Human Coordinator Review</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
               Ambiguous, idiomatic, or consequential health facts require coordinator confirmation before permanent commit.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 8</span>
-            <div className="font-bold text-slate-200">Triage Queue Update</div>
-            <p className="text-slate-400">
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 08</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Triage Queue Update</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
               If candidate observation reveals clinical concern, case is created or priority tier is elevated.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
-            <span className="font-mono text-teal-400 font-bold">STEP 9</span>
-            <div className="font-bold text-slate-200">Immutable Audit Sealing</div>
-            <p className="text-slate-400">
-              Raw message metadata, parsed entities, and coordinator action are committed to `audit_events`.
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-2">
+            <span className="font-mono text-[#72D8B0] font-bold text-[11px] block">STEP 09</span>
+            <div className="font-semibold text-sm text-[#F4F2EA]">Immutable Audit Sealing</div>
+            <p className="text-[#A9C2AE] leading-relaxed">
+              Raw message metadata, parsed entities, and coordinator action are committed to <code className="text-[#72D8B0] font-mono">audit_events</code>.
             </p>
           </div>
         </div>
@@ -183,13 +183,13 @@ export default function WhatsAppIntegrationPage() {
       {/* DELIVERY STATE MACHINE (OUTBOUND MESSAGING) */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             State Machine
-          </h2>
-          <h3 className="text-2xl font-bold text-white mt-1">
+          </span>
+          <h2 className="text-headline text-[#F4F2EA] mt-1">
             Outbound Delivery Lifecycle State Machine
-          </h3>
-          <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
+          </h2>
+          <p className="text-sm text-[#A9C2AE] mt-1.5 max-w-2xl leading-relaxed">
             In safety-critical care coordination, the platform distinguishes between server transmission, carrier routing, and confirmed recipient receipt.
           </p>
         </div>
@@ -198,29 +198,29 @@ export default function WhatsAppIntegrationPage() {
           {deliveryStates.map((st, idx) => (
             <div
               key={st.state}
-              className="p-5 rounded-2xl bg-[#0f172a] border border-slate-800 space-y-2 hover:border-slate-700 transition-colors"
+              className="p-5 rounded-2xl bg-[#17231F] border border-[#273830] space-y-3 hover:border-[#72D8B0]/40 transition-colors"
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-teal-400 font-bold text-[11px]">
+                <span className="font-mono text-[#72D8B0] font-bold text-[11px]">
                   STATE 0{idx + 1}
                 </span>
                 <span
-                  className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                  className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border ${
                     st.state === 'Delivered'
-                      ? 'bg-emerald-500/20 text-emerald-300'
+                      ? 'bg-[#245B49]/30 border-[#245B49] text-[#72D8B0]'
                       : st.state === 'Read'
-                      ? 'bg-blue-500/20 text-blue-300'
+                      ? 'bg-[#17231F] border-[#273830] text-[#A9C2AE]'
                       : st.state === 'Failed'
-                      ? 'bg-rose-500/20 text-rose-300'
-                      : 'bg-slate-800 text-slate-300'
+                      ? 'bg-[#3b1219]/40 border-[#ef4444]/40 text-[#fca5a5]'
+                      : 'bg-[#101714] border-[#273830] text-[#A9C2AE]'
                   }`}
                 >
                   {st.state}
                 </span>
               </div>
-              <h4 className="font-bold text-sm text-white">{st.state}</h4>
-              <p className="text-slate-400 leading-relaxed">{st.desc}</p>
-              <div className="p-2 rounded bg-slate-900 text-[11px] text-slate-500 border border-slate-800/80">
+              <h4 className="font-semibold text-sm text-[#F4F2EA]">{st.state}</h4>
+              <p className="text-[#A9C2AE] leading-relaxed">{st.desc}</p>
+              <div className="p-2.5 rounded-xl bg-[#101714] text-[11px] text-[#A9C2AE]/80 border border-[#273830]">
                 {st.note}
               </div>
             </div>
@@ -229,51 +229,51 @@ export default function WhatsAppIntegrationPage() {
       </section>
 
       {/* META DEVELOPER APP DEMO CONFIGURATION */}
-      <section className="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+      <section className="bg-[#17231F] border border-[#273830] rounded-3xl p-6 sm:p-8 space-y-6">
         <div>
-          <span className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Configuration Guide
           </span>
-          <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+          <h3 className="text-headline text-[#F4F2EA] mt-1">
             Meta Cloud API Environment Variables & Setup
           </h3>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-sm text-[#A9C2AE] mt-1.5 leading-relaxed">
             Required secrets configured on Vercel deployment (displayed with synthetic placeholders).
           </p>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#090d16] border border-slate-800 font-mono text-xs text-teal-300/90 space-y-2 leading-relaxed overflow-x-auto">
-          <div># Meta WhatsApp Cloud API Credentials</div>
-          <div>META_WHATSAPP_PHONE_NUMBER_ID="109827364512345"</div>
-          <div>META_WHATSAPP_BUSINESS_ACCOUNT_ID="209871625341234"</div>
-          <div>META_WHATSAPP_ACCESS_TOKEN="EAAKl...[SERVER_ONLY_SECRET]"</div>
-          <div>META_WEBHOOK_VERIFY_TOKEN="sahaara_deviathon_webhook_secret_2026"</div>
-          <div>META_APP_SECRET="9f8e7d6c5b...[SERVER_ONLY_SECRET]"</div>
-          <div className="pt-2 text-slate-500">
+        <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] font-mono text-xs text-[#72D8B0] space-y-2 leading-relaxed overflow-x-auto">
+          <div className="text-[#A9C2AE]/60"># Meta WhatsApp Cloud API Credentials</div>
+          <div>META_WHATSAPP_PHONE_NUMBER_ID=&quot;109827364512345&quot;</div>
+          <div>META_WHATSAPP_BUSINESS_ACCOUNT_ID=&quot;209871625341234&quot;</div>
+          <div>META_WHATSAPP_ACCESS_TOKEN=&quot;EAAKl...[SERVER_ONLY_SECRET]&quot;</div>
+          <div>META_WEBHOOK_VERIFY_TOKEN=&quot;sahaara_deviathon_webhook_secret_2026&quot;</div>
+          <div>META_APP_SECRET=&quot;9f8e7d6c5b...[SERVER_ONLY_SECRET]&quot;</div>
+          <div className="pt-2 text-[#A9C2AE]/60">
             # Webhook Subscriptions Required: messages, message_deliveries
           </div>
         </div>
 
-        <div className="bg-amber-950/20 border border-amber-500/30 p-4 rounded-xl text-xs text-amber-200/90 leading-relaxed flex items-start gap-2.5">
-          <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+        <div className="bg-[#17231F] border border-[#E5A93C]/30 p-5 rounded-2xl text-xs text-[#E5A93C]/90 leading-relaxed flex items-start gap-3">
+          <AlertTriangle className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
           <div>
-            <strong className="text-amber-200">Commercial & Operational Reality:</strong> Meta Developer test numbers can only send to registered tester phone numbers. In production, pre-approved Meta message templates are required for outbound conversations initiated by the care team, and Meta conversation fees apply. We never claim production WhatsApp messaging is free.
+            <strong className="text-[#F4F2EA] font-medium">Commercial & Operational Reality:</strong> Meta Developer test numbers can only send to registered tester phone numbers. In production, pre-approved Meta message templates are required for outbound conversations initiated by the care team, and Meta conversation fees apply. We never claim production WhatsApp messaging is free.
           </div>
         </div>
       </section>
 
       {/* Bottom CTA to Evaluation Page */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[#273830] text-xs">
         <Link
           href="/evaluation"
-          className="text-teal-400 font-semibold hover:underline flex items-center gap-1.5"
+          className="text-[#72D8B0] font-medium hover:underline flex items-center gap-1.5"
         >
           <span>Next: Synthetic Benchmark Results (200 Seniors / 90 Days)</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
         <Link
           href="/demo"
-          className="text-slate-400 hover:text-slate-200 transition-colors"
+          className="text-[#A9C2AE] hover:text-[#F4F2EA] transition-colors"
         >
           Test Scenario 2 WhatsApp Ingestion in Simulator →
         </Link>
@@ -281,3 +281,4 @@ export default function WhatsAppIntegrationPage() {
     </div>
   );
 }
+

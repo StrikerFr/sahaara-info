@@ -192,16 +192,16 @@ export const DemoSimulator: React.FC = () => {
   return (
     <div className="w-full">
       {/* Synthetic Watermark Notice */}
-      <div className="flex items-center justify-between bg-teal-950/40 border border-teal-500/30 rounded-xl p-3 mb-6">
-        <div className="flex items-center gap-2.5 text-xs text-teal-300">
-          <Info className="w-4 h-4 text-teal-400 shrink-0" />
+      <div className="flex items-center justify-between bg-[#141F1A] border border-[#273830] rounded-xl p-3.5 mb-6">
+        <div className="flex items-center gap-3 text-xs text-[#A9C2AE]">
+          <Info className="w-4 h-4 text-[#72D8B0] shrink-0" />
           <span>
-            <strong>Synthetic Demonstration Environment:</strong> All senior profiles, observations, and phone numbers are deterministically generated synthetic fixtures for Deviathon 2.0. No real personal or patient data is used.
+            <strong className="text-[#F4F2EA]">Synthetic Demonstration Environment:</strong> All senior profiles, observations, and phone numbers are deterministically generated synthetic fixtures for Deviathon 2.0. No real personal or patient data is used.
           </span>
         </div>
         <button
           onClick={handleReset}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition-colors shrink-0 ml-4"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#202B26] hover:bg-[#283A31] text-[#D8E2DC] text-xs font-medium border border-[#2E4037] transition-colors shrink-0 ml-4 cursor-pointer"
           title="Reset all scenarios to default seeded state"
         >
           <RotateCcw className="w-3.5 h-3.5" />
@@ -211,16 +211,16 @@ export const DemoSimulator: React.FC = () => {
 
       {/* Scenario Selector Pills */}
       <div className="mb-6">
-        <div className="flex items-center justify-between mb-2">
-          <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+        <div className="flex items-center justify-between mb-2.5">
+          <label className="text-[11px] font-semibold text-[#8F9A92] uppercase tracking-wider">
             Select Test Scenario (8 Seeded Scenarios)
           </label>
-          <span className="text-xs text-slate-400">
-            Current: <span className="text-teal-400 font-semibold">{activeScenario.title}</span>
+          <span className="text-xs text-[#8F9A92]">
+            Current: <span className="text-[#F4F2EA] font-semibold">{activeScenario.title}</span>
           </span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {scenariosList.map((scenario) => {
             const isSelected = scenario.id === selectedScenarioId;
             const itemCase = scenarioState[scenario.id];
@@ -231,20 +231,20 @@ export const DemoSimulator: React.FC = () => {
                   setSelectedScenarioId(scenario.id);
                   setActionSuccessMsg(null);
                 }}
-                className={`p-2.5 rounded-xl border text-left transition-all relative ${
+                className={`p-3 rounded-xl border text-left transition-all relative cursor-pointer ${
                   isSelected
-                    ? 'bg-teal-950/60 border-teal-500/80 shadow-lg shadow-teal-950/50'
-                    : 'bg-slate-900/60 border-slate-800 hover:border-slate-700 hover:bg-slate-900'
+                    ? 'bg-[#202B26] border-[#245B49] shadow-md shadow-black/40 ring-1 ring-[#72D8B0]/30'
+                    : 'bg-[#141F1A] border-[#22332B] hover:border-[#2D4238] hover:bg-[#17231F]'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center justify-between mb-1.5">
                   <span
-                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                       scenario.severity === 'Urgent Attention'
-                        ? 'bg-rose-500/20 text-rose-300'
+                        ? 'bg-[#B94343]/20 text-[#E89898]'
                         : scenario.severity === 'Review Required'
-                        ? 'bg-amber-500/20 text-amber-300'
-                        : 'bg-emerald-500/20 text-emerald-300'
+                        ? 'bg-[#B87922]/20 text-[#E2B77E]'
+                        : 'bg-[#245B49]/40 text-[#A9C2AE]'
                     }`}
                   >
                     {scenario.severity}
@@ -252,20 +252,20 @@ export const DemoSimulator: React.FC = () => {
                   <span
                     className={`w-2 h-2 rounded-full ${
                       itemCase?.status === 'Resolved'
-                        ? 'bg-emerald-400'
+                        ? 'bg-[#72D8B0]'
                         : itemCase?.status === 'Acknowledged'
-                        ? 'bg-amber-400'
+                        ? 'bg-[#E2B77E]'
                         : itemCase?.status === 'Escalated'
-                        ? 'bg-rose-400'
-                        : 'bg-blue-400'
+                        ? 'bg-[#E89898]'
+                        : 'bg-[#8F9A92]'
                     }`}
                     title={`Status: ${itemCase?.status}`}
                   />
                 </div>
-                <div className="font-semibold text-xs text-slate-200 truncate">
+                <div className="font-semibold text-xs text-[#F4F2EA] truncate">
                   {scenario.title.split(':')[1] || scenario.title}
                 </div>
-                <div className="text-[11px] text-slate-400 truncate mt-0.5">
+                <div className="text-[11px] text-[#8F9A92] truncate mt-0.5">
                   {scenario.category}
                 </div>
               </button>
@@ -275,24 +275,24 @@ export const DemoSimulator: React.FC = () => {
       </div>
 
       {/* Main Coordinator Simulator Console */}
-      <div className="bg-[#0f172a] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div className="bg-[#17231F] border border-[#273830] rounded-2xl shadow-xl overflow-hidden">
         {/* Console Header Bar */}
-        <div className="bg-[#131d33] border-b border-slate-800/80 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 font-bold">
+        <div className="bg-[#141E1A] border-b border-[#273830] p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-[#245B49]/20 border border-[#245B49]/40 flex items-center justify-center text-[#72D8B0] font-bold">
               <User className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-bold text-base text-white">{activeScenario.senior.name}</h3>
-                <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                <h3 className="font-bold text-base text-[#F4F2EA]">{activeScenario.senior.name}</h3>
+                <span className="text-xs px-2 py-0.5 rounded bg-[#202B26] text-[#A9C2AE] border border-[#2E4037]">
                   Age {activeScenario.senior.age}
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                <span className="text-xs px-2 py-0.5 rounded bg-[#202B26] text-[#A9C2AE] border border-[#2E4037]">
                   {activeScenario.senior.city}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-[#8F9A92] mt-0.5">
                 {activeScenario.senior.livingArrangement}
               </p>
             </div>
@@ -301,22 +301,22 @@ export const DemoSimulator: React.FC = () => {
           {/* Current Case Status & Quick Action */}
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
-              <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
+              <div className="text-[10px] uppercase font-bold tracking-wider text-[#8F9A92]">
                 Case Status
               </div>
               <div className="flex items-center justify-end gap-1.5 mt-0.5">
                 <span
                   className={`inline-block w-2 h-2 rounded-full ${
                     currentCase.status === 'Resolved'
-                      ? 'bg-emerald-400'
+                      ? 'bg-[#72D8B0]'
                       : currentCase.status === 'Acknowledged'
-                      ? 'bg-amber-400'
+                      ? 'bg-[#E2B77E]'
                       : currentCase.status === 'Escalated'
-                      ? 'bg-rose-400'
-                      : 'bg-blue-400'
+                      ? 'bg-[#E89898]'
+                      : 'bg-[#A9C2AE]'
                   }`}
                 />
-                <span className="text-xs font-semibold text-slate-200">
+                <span className="text-xs font-semibold text-[#F4F2EA]">
                   {currentCase.status}
                 </span>
               </div>
@@ -325,9 +325,9 @@ export const DemoSimulator: React.FC = () => {
             {currentCase.status === 'New' && (
               <button
                 onClick={handleAcknowledge}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs shadow-md shadow-teal-700/20 transition-all"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#245B49] hover:bg-[#2E6E5A] text-[#F4F2EA] font-semibold text-xs shadow-sm transition-all cursor-pointer"
               >
-                <CheckCircle2 className="w-4 h-4" />
+                <CheckCircle2 className="w-4 h-4 text-[#72D8B0]" />
                 <span>Acknowledge Alert</span>
               </button>
             )}
@@ -335,7 +335,7 @@ export const DemoSimulator: React.FC = () => {
             {currentCase.status === 'Acknowledged' && (
               <button
                 onClick={() => setActiveTab('action')}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-xs shadow-md shadow-amber-700/20 transition-all"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#B87922] hover:bg-[#C9872C] text-[#F4F2EA] font-semibold text-xs shadow-sm transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
                 <span>Log Check-in Call</span>
@@ -343,14 +343,14 @@ export const DemoSimulator: React.FC = () => {
             )}
 
             {currentCase.status === 'Resolved' && (
-              <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-semibold text-xs flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <div className="px-3 py-1.5 rounded-lg bg-[#245B49]/20 border border-[#245B49]/40 text-[#A9C2AE] font-semibold text-xs flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#72D8B0]" />
                 <span>Resolved</span>
               </div>
             )}
 
             {currentCase.status === 'Escalated' && (
-              <div className="px-3 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 font-semibold text-xs flex items-center gap-1.5">
+              <div className="px-3 py-1.5 rounded-lg bg-[#B94343]/20 border border-[#B94343]/40 text-[#E89898] font-semibold text-xs flex items-center gap-1.5">
                 <ShieldAlert className="w-3.5 h-3.5" />
                 <span>Escalated to Emergency</span>
               </div>
@@ -359,51 +359,51 @@ export const DemoSimulator: React.FC = () => {
         </div>
 
         {/* Narrative Context Card */}
-        <div className="p-4 bg-slate-900/40 border-b border-slate-800 text-xs text-slate-300 leading-relaxed flex items-start gap-2.5">
-          <Sparkles className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+        <div className="p-4 bg-[#131D19] border-b border-[#273830] text-xs text-[#A9C2AE] leading-relaxed flex items-start gap-2.5">
+          <Sparkles className="w-4 h-4 text-[#72D8B0] shrink-0 mt-0.5" />
           <div>
-            <strong className="text-slate-200">Scenario Context:</strong> {activeScenario.narrative}
+            <strong className="text-[#F4F2EA]">Scenario Context:</strong> {activeScenario.narrative}
           </div>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-slate-800 bg-slate-900/60 px-4">
+        <div className="flex border-b border-[#273830] bg-[#121B17] px-4 overflow-x-auto">
           <button
             onClick={() => setActiveTab('evidence')}
-            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors ${
+            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'evidence'
-                ? 'border-teal-400 text-teal-300'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-[#72D8B0] text-[#F4F2EA]'
+                : 'border-transparent text-[#8F9A92] hover:text-[#D8E2DC]'
             }`}
           >
             Explainable Evidence Card
           </button>
           <button
             onClick={() => setActiveTab('timeline')}
-            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors ${
+            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'timeline'
-                ? 'border-teal-400 text-teal-300'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-[#72D8B0] text-[#F4F2EA]'
+                : 'border-transparent text-[#8F9A92] hover:text-[#D8E2DC]'
             }`}
           >
             Recent Observations ({activeScenario.recentObservations.length})
           </button>
           <button
             onClick={() => setActiveTab('action')}
-            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors ${
+            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'action'
-                ? 'border-teal-400 text-teal-300'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-[#72D8B0] text-[#F4F2EA]'
+                : 'border-transparent text-[#8F9A92] hover:text-[#D8E2DC]'
             }`}
           >
             Action & Follow-up
           </button>
           <button
             onClick={() => setActiveTab('audit')}
-            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors ${
+            className={`py-3 px-4 text-xs font-semibold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'audit'
-                ? 'border-teal-400 text-teal-300'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-[#72D8B0] text-[#F4F2EA]'
+                : 'border-transparent text-[#8F9A92] hover:text-[#D8E2DC]'
             }`}
           >
             Live Audit Trail ({currentCase.auditLog.length})
@@ -412,9 +412,9 @@ export const DemoSimulator: React.FC = () => {
 
         {/* Success Banner */}
         {actionSuccessMsg && (
-          <div className="bg-emerald-950/60 border-b border-emerald-500/30 px-4 py-2 text-xs text-emerald-300 flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>{actionSuccessMsg}</span>
+          <div className="bg-[#245B49]/30 border-b border-[#245B49]/50 px-4 py-2 text-xs text-[#A9C2AE] flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[#72D8B0]" />
+            <span className="text-[#F4F2EA]">{actionSuccessMsg}</span>
           </div>
         )}
 
@@ -425,12 +425,12 @@ export const DemoSimulator: React.FC = () => {
             <div
               className={`p-4 rounded-xl border ${
                 activeScenario.alert.priority === 'Critical'
-                  ? 'bg-rose-950/30 border-rose-500/40 text-rose-200'
+                  ? 'bg-[#B94343]/15 border-[#B94343]/40 text-[#E89898]'
                   : activeScenario.alert.priority === 'High'
-                  ? 'bg-amber-950/30 border-amber-500/40 text-amber-200'
+                  ? 'bg-[#B87922]/15 border-[#B87922]/40 text-[#E2B77E]'
                   : activeScenario.alert.priority === 'Medium'
-                  ? 'bg-blue-950/30 border-blue-500/40 text-blue-200'
-                  : 'bg-emerald-950/20 border-emerald-500/30 text-emerald-200'
+                  ? 'bg-[#245B49]/20 border-[#245B49]/50 text-[#A9C2AE]'
+                  : 'bg-[#1C2C25] border-[#273830] text-[#A9C2AE]'
               }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
@@ -438,34 +438,34 @@ export const DemoSimulator: React.FC = () => {
                   <span
                     className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
                       activeScenario.alert.priority === 'Critical'
-                        ? 'bg-rose-500 text-white'
+                        ? 'bg-[#B94343] text-white'
                         : activeScenario.alert.priority === 'High'
-                        ? 'bg-amber-500 text-slate-950'
+                        ? 'bg-[#B87922] text-[#101714]'
                         : activeScenario.alert.priority === 'Medium'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-emerald-600 text-white'
+                        ? 'bg-[#245B49] text-white'
+                        : 'bg-[#202B26] text-[#A9C2AE]'
                     }`}
                   >
                     Priority: {activeScenario.alert.priority}
                   </span>
-                  <span className="text-xs text-slate-400 font-mono">
+                  <span className="text-xs text-[#8F9A92] font-mono">
                     {activeScenario.alert.alertId}
                   </span>
                 </div>
-                <div className="text-xs text-slate-400 flex items-center gap-1.5">
+                <div className="text-xs text-[#8F9A92] flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5" />
                   <span>Detected: {activeScenario.alert.detectedAt}</span>
                   <span>·</span>
-                  <span className="font-semibold text-slate-300">
+                  <span className="font-semibold text-[#D8E2DC]">
                     Engine: {activeScenario.alert.engineUsed}
                   </span>
                 </div>
               </div>
 
-              <h4 className="font-bold text-base text-white mb-1.5">
+              <h4 className="font-bold text-base text-[#F4F2EA] mb-1.5">
                 {activeScenario.alert.title}
               </h4>
-              <p className="text-xs leading-relaxed text-slate-300">
+              <p className="text-xs leading-relaxed text-[#D8E2DC]">
                 {activeScenario.alert.rationale}
               </p>
             </div>
@@ -473,17 +473,17 @@ export const DemoSimulator: React.FC = () => {
             {/* Evidence Breakdown Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Contributing Observations */}
-              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+              <div className="bg-[#141F1A] border border-[#273830] rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <Activity className="w-4 h-4 text-teal-400" />
-                  <h5 className="font-semibold text-xs text-slate-200 uppercase tracking-wider">
+                  <Activity className="w-4 h-4 text-[#72D8B0]" />
+                  <h5 className="font-semibold text-xs text-[#F4F2EA] uppercase tracking-wider">
                     Contributing Observations
                   </h5>
                 </div>
                 <ul className="space-y-2 text-xs">
                   {activeScenario.alert.contributingObservations.map((obs, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-slate-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0 mt-1.5" />
+                    <li key={idx} className="flex items-start gap-2 text-[#D8E2DC]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#72D8B0] shrink-0 mt-1.5" />
                       <span>{obs}</span>
                     </li>
                   ))}
@@ -491,27 +491,27 @@ export const DemoSimulator: React.FC = () => {
               </div>
 
               {/* Personal Baseline Reference */}
-              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+              <div className="bg-[#141F1A] border border-[#273830] rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <Calendar className="w-4 h-4 text-teal-400" />
-                  <h5 className="font-semibold text-xs text-slate-200 uppercase tracking-wider">
+                  <Calendar className="w-4 h-4 text-[#72D8B0]" />
+                  <h5 className="font-semibold text-xs text-[#F4F2EA] uppercase tracking-wider">
                     Personal Baseline Reference
                   </h5>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed mb-3">
+                <p className="text-xs text-[#D8E2DC] leading-relaxed mb-3">
                   {activeScenario.alert.baselineReference}
                 </p>
-                <div className="flex items-center gap-3 text-xs text-slate-400 pt-2 border-t border-slate-800">
+                <div className="flex items-center gap-3 text-xs text-[#8F9A92] pt-2 border-t border-[#273830]">
                   <span>
                     Confidence:{' '}
-                    <strong className="text-teal-300">
+                    <strong className="text-[#72D8B0]">
                       {activeScenario.senior.baselineConfidence}
                     </strong>
                   </span>
                   <span>·</span>
                   <span>
                     History:{' '}
-                    <strong className="text-slate-200">
+                    <strong className="text-[#F4F2EA]">
                       {activeScenario.senior.dataCoverageDays} Days
                     </strong>
                   </span>
@@ -520,17 +520,17 @@ export const DemoSimulator: React.FC = () => {
             </div>
 
             {/* Missing or Conflicting Data Box */}
-            <div className="bg-amber-950/20 border border-amber-500/30 rounded-xl p-4">
-              <div className="flex items-center gap-2 mb-2 text-amber-400">
+            <div className="bg-[#B87922]/15 border border-[#B87922]/30 rounded-xl p-4">
+              <div className="flex items-center gap-2 mb-2 text-[#E2B77E]">
                 <AlertTriangle className="w-4 h-4 shrink-0" />
                 <h5 className="font-semibold text-xs uppercase tracking-wider">
                   Missing, Delayed, or Conflicting Signals
                 </h5>
               </div>
-              <ul className="space-y-1 text-xs text-amber-200/90">
+              <ul className="space-y-1 text-xs text-[#E2B77E]/90">
                 {activeScenario.alert.missingOrConflictingData.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-amber-400">⚠️</span>
+                    <span className="text-[#B87922]">⚠️</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -538,13 +538,13 @@ export const DemoSimulator: React.FC = () => {
             </div>
 
             {/* Suggested Coordinator Verification Action */}
-            <div className="bg-teal-950/30 border border-teal-500/40 rounded-xl p-4 flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
+            <div className="bg-[#202B26] border border-[#2E4037] rounded-xl p-4 flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-[#72D8B0] shrink-0 mt-0.5" />
               <div>
-                <h5 className="font-semibold text-xs text-teal-200 uppercase tracking-wider mb-1">
+                <h5 className="font-semibold text-xs text-[#A9C2AE] uppercase tracking-wider mb-1">
                   Suggested Action & Verification Script
                 </h5>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-[#D8E2DC] leading-relaxed">
                   {activeScenario.alert.suggestedAction}
                 </p>
               </div>
@@ -555,36 +555,36 @@ export const DemoSimulator: React.FC = () => {
         {/* Tab 2: Recent Observations Timeline */}
         {activeTab === 'timeline' && (
           <div className="p-5">
-            <div className="mb-4 text-xs text-slate-400">
+            <div className="mb-4 text-xs text-[#8F9A92]">
               Chronological log of multi-source inputs ingested within the last 72-hour window.
             </div>
-            <div className="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-800">
+            <div className="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#273830]">
               {activeScenario.recentObservations.map((obs, idx) => (
                 <div key={idx} className="relative group">
                   <div
                     className={`absolute -left-6 top-1 w-3.5 h-3.5 rounded-full border-2 ${
                       obs.isAbnormal
-                        ? 'bg-amber-500 border-amber-300 ring-2 ring-amber-500/20'
-                        : 'bg-slate-800 border-teal-500'
+                        ? 'bg-[#B87922] border-[#E2B77E]'
+                        : 'bg-[#17231F] border-[#245B49]'
                     }`}
                   />
                   <div
                     className={`p-3.5 rounded-xl border text-xs ${
                       obs.isAbnormal
-                        ? 'bg-amber-950/20 border-amber-500/40 text-amber-200'
-                        : 'bg-slate-900/60 border-slate-800 text-slate-300'
+                        ? 'bg-[#B87922]/15 border-[#B87922]/30 text-[#E2B77E]'
+                        : 'bg-[#141F1A] border-[#273830] text-[#D8E2DC]'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2 mb-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-slate-200">{obs.source}</span>
-                        <span className="text-[10px] px-1.5 py-0.2 bg-slate-800 text-slate-400 rounded uppercase font-mono">
+                        <span className="font-bold text-[#F4F2EA]">{obs.source}</span>
+                        <span className="text-[10px] px-1.5 py-0.5 bg-[#202B26] text-[#A9C2AE] rounded uppercase font-mono">
                           {obs.type}
                         </span>
                       </div>
-                      <span className="text-slate-400 font-mono text-[11px]">{obs.time}</span>
+                      <span className="text-[#8F9A92] font-mono text-[11px]">{obs.time}</span>
                     </div>
-                    <p className="text-slate-300 leading-relaxed">{obs.detail}</p>
+                    <p className="text-[#D8E2DC] leading-relaxed">{obs.detail}</p>
                   </div>
                 </div>
               ))}
@@ -595,23 +595,23 @@ export const DemoSimulator: React.FC = () => {
         {/* Tab 3: Action & Follow-up */}
         {activeTab === 'action' && (
           <div className="p-5 max-w-2xl">
-            <h4 className="font-bold text-sm text-white mb-2">
+            <h4 className="font-bold text-sm text-[#F4F2EA] mb-2">
               Coordinator Call & Follow-Up Documentation
             </h4>
-            <p className="text-xs text-slate-400 mb-4 leading-relaxed">
+            <p className="text-xs text-[#8F9A92] mb-4 leading-relaxed">
               Record check-in details, conversation notes, and case resolution. Every recorded action is permanently sealed into the immutable audit trail.
             </p>
 
             <form onSubmit={handleLogFollowUp} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#D8E2DC] mb-1">
                     Contacted Party
                   </label>
                   <select
                     value={selectedContactedParty}
                     onChange={(e) => setSelectedContactedParty(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-[#121B17] border border-[#273830] rounded-lg px-3 py-2 text-xs text-[#F4F2EA] focus:outline-none focus:border-[#72D8B0]"
                   >
                     <option value="Senior">Senior Directly (Phone/WhatsApp)</option>
                     <option value="Son">Son / Primary Relative</option>
@@ -622,13 +622,13 @@ export const DemoSimulator: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#D8E2DC] mb-1">
                     Case Outcome Category
                   </label>
                   <select
                     value={selectedOutcome}
                     onChange={(e) => setSelectedOutcome(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-[#121B17] border border-[#273830] rounded-lg px-3 py-2 text-xs text-[#F4F2EA] focus:outline-none focus:border-[#72D8B0]"
                   >
                     <option value="Resolved with Family">Resolved with Family (Follow-up agreed)</option>
                     <option value="Routine Restored">Routine Restored (False alarm / benign)</option>
@@ -640,7 +640,7 @@ export const DemoSimulator: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[#D8E2DC] mb-1">
                   Coordinator Notes & Follow-Up Agreement *
                 </label>
                 <textarea
@@ -649,22 +649,22 @@ export const DemoSimulator: React.FC = () => {
                   onChange={(e) => setCallNotesInput(e.target.value)}
                   placeholder="e.g. Spoke with son Amit. Confirmed Mrs. Verma felt weak after skipping breakfast. Neighbor Dr. Joshi visited with khichdi. Son visiting at 6 PM. Follow-up task set for 7 PM."
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-200 focus:outline-none focus:border-teal-500 leading-relaxed"
+                  className="w-full bg-[#121B17] border border-[#273830] rounded-lg p-3 text-xs text-[#F4F2EA] focus:outline-none focus:border-[#72D8B0] leading-relaxed placeholder:text-[#5E6D64]"
                 />
               </div>
 
               <div className="flex items-center justify-between pt-2">
-                <div className="text-[11px] text-slate-400">
+                <div className="text-[11px] text-[#8F9A92]">
                   Assigned Coordinator:{' '}
-                  <span className="font-semibold text-slate-200">
+                  <span className="font-semibold text-[#F4F2EA]">
                     {currentCase.assignedCoordinator}
                   </span>
                 </div>
                 <button
                   type="submit"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs shadow-md shadow-teal-700/20 transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#245B49] hover:bg-[#2E6E5A] text-[#F4F2EA] font-semibold text-xs shadow-sm transition-all cursor-pointer"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-3.5 h-3.5 text-[#72D8B0]" />
                   <span>Save Follow-up & Close Case</span>
                 </button>
               </div>
@@ -676,10 +676,10 @@ export const DemoSimulator: React.FC = () => {
         {activeTab === 'audit' && (
           <div className="p-5">
             <div className="flex items-center justify-between mb-4">
-              <div className="text-xs text-slate-400">
+              <div className="text-xs text-[#8F9A92]">
                 Immutable chronological log of all observations, rule firings, and coordinator actions.
               </div>
-              <span className="text-[11px] font-mono text-teal-400">
+              <span className="text-[11px] font-mono text-[#72D8B0]">
                 Integrity Hash: SHA-256 Verified
               </span>
             </div>
@@ -688,18 +688,18 @@ export const DemoSimulator: React.FC = () => {
               {currentCase.auditLog.map((log) => (
                 <div
                   key={log.id}
-                  className="p-3 rounded-lg bg-slate-900/70 border border-slate-800 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
+                  className="p-3.5 rounded-lg bg-[#141F1A] border border-[#273830] text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
                 >
                   <div className="space-y-0.5">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-slate-200">{log.action}</span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 font-mono">
+                      <span className="font-semibold text-[#F4F2EA]">{log.action}</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#202B26] text-[#A9C2AE] font-mono">
                         {log.actor}
                       </span>
                     </div>
-                    <p className="text-slate-400 text-[11px]">{log.details}</p>
+                    <p className="text-[#8F9A92] text-[11px]">{log.details}</p>
                   </div>
-                  <span className="text-[11px] text-slate-500 font-mono shrink-0">
+                  <span className="text-[11px] text-[#8F9A92] font-mono shrink-0">
                     {log.timestamp}
                   </span>
                 </div>

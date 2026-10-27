@@ -2,15 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import {
-  HeartHandshake,
   Award,
-  Users,
+  ArrowRight,
+  Sparkles,
   ShieldCheck,
   CheckCircle2,
-  ArrowRight,
-  Code2,
-  Workflow,
-  Sparkles
+  Users
 } from 'lucide-react';
 
 export const metadata = {
@@ -59,40 +56,40 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       <Breadcrumb items={[{ label: 'About & Team' }]} />
 
       {/* Header Intro */}
-      <div className="max-w-3xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold">
-          <Award className="w-3.5 h-3.5" />
+      <div className="max-w-3xl space-y-5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#17231F] border border-[#273830] text-[#72D8B0] text-xs font-mono tracking-wide">
+          <Award className="w-3.5 h-3.5 text-[#72D8B0]" />
           <span>Deviathon 2.0 · GLA University</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 className="text-display text-[#F4F2EA]">
           Engineering early warning that{' '}
-          <span className="text-teal-400">leads to human care.</span>
+          <span className="font-serif italic text-[#A9C2AE] font-normal">leads to human care.</span>
         </h1>
 
-        <p className="text-base text-slate-300 leading-relaxed">
-          Sahaara was designed and implemented for <strong>Deviathon 2.0</strong> at GLA University,
-          responding to the problem statement submitted by <strong>Samarth Life Management Pvt. Ltd.</strong>—an
+        <p className="text-lg text-[#A9C2AE] leading-relaxed">
+          Sahaara was designed and implemented for <strong className="text-[#F4F2EA]">Deviathon 2.0</strong> at GLA University,
+          responding to the problem statement submitted by <strong className="text-[#F4F2EA]">Samarth Life Management Pvt. Ltd.</strong>—an
           elder-care organisation dedicated to supporting senior citizens living at home across India.
         </p>
       </div>
 
       {/* ORIGIN & MOTIVATION SECTION */}
-      <section className="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-6">
+      <section className="bg-[#17231F] border border-[#273830] rounded-3xl p-6 sm:p-10 space-y-6">
         <div>
-          <span className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Project Origin
           </span>
-          <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
+          <h2 className="text-headline text-[#F4F2EA] mt-1">
             The Samarth Life Management Problem Statement
           </h2>
         </div>
 
-        <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <div className="space-y-4 text-xs sm:text-sm text-[#A9C2AE] leading-relaxed">
           <p>
             With millions of older adults living independently in Indian cities while their adult children
             work in other cities or abroad, care organisations face an acute challenge: how can care
@@ -101,12 +98,12 @@ export default function AboutPage() {
           </p>
           <p>
             Current care models often rely on sporadic phone calls or unstructured WhatsApp chats. A
-            coordinator might speak to an elder for two minutes on Monday, hear "Everything is fine, beta,"
+            coordinator might speak to an elder for two minutes on Monday, hear &ldquo;Everything is fine, beta,&rdquo;
             and have zero visibility into the fact that the senior’s step count fell by 60% over the weekend
             and their afternoon medication dose was missed.
           </p>
-          <div className="p-4 rounded-xl bg-teal-950/30 border border-teal-500/30 text-teal-200 text-xs leading-relaxed">
-            <strong>The Sahaara Objective:</strong> To build a coordinator-first wellbeing intelligence
+          <div className="p-5 rounded-2xl bg-[#101714] border border-[#273830] text-[#A9C2AE] text-xs leading-relaxed">
+            <strong className="text-[#72D8B0] block mb-1 font-semibold">The Sahaara Objective:</strong> To build a coordinator-first wellbeing intelligence
             system that unifies fragmented observations, compares them against personal historical baselines,
             presents explainable evidence, and ensures that every concern leads to documented human action.
           </div>
@@ -116,38 +113,38 @@ export default function AboutPage() {
       {/* ENGINEERING PRINCIPLES */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Our North Star
-          </h2>
-          <h3 className="text-2xl font-bold text-white mt-1">Four Core Engineering Principles</h3>
+          </span>
+          <h2 className="text-headline text-[#F4F2EA] mt-1">Four Core Engineering Principles</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
           {principles.map((pr, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 space-y-2 hover:border-teal-500/40 transition-colors"
+              className="p-6 sm:p-7 rounded-2xl bg-[#17231F] border border-[#273830] space-y-2.5 hover:border-[#72D8B0]/40 transition-colors"
             >
               <div className="flex items-center gap-2">
-                <span className="font-mono text-teal-400 font-bold">0{idx + 1}.</span>
-                <h4 className="font-bold text-sm text-white">{pr.title}</h4>
+                <span className="font-mono text-[#72D8B0] font-bold">0{idx + 1}.</span>
+                <h3 className="font-semibold text-base text-[#F4F2EA]">{pr.title}</h3>
               </div>
-              <p className="text-slate-400 leading-relaxed pt-1">{pr.desc}</p>
+              <p className="text-[#A9C2AE] leading-relaxed">{pr.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* TEAM RESPONSIBILITIES */}
-      <section className="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-6">
+      <section className="bg-[#17231F] border border-[#273830] rounded-3xl p-6 sm:p-10 space-y-6">
         <div>
-          <span className="text-xs font-mono uppercase font-bold text-teal-400 tracking-wider">
+          <span className="text-xs font-mono uppercase font-bold text-[#72D8B0] tracking-widest block">
             Execution Team
           </span>
-          <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
+          <h2 className="text-headline text-[#F4F2EA] mt-1">
             Interdisciplinary Engineering Disciplines
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-sm text-[#A9C2AE] mt-1.5 leading-relaxed">
             Built as a collaborative full-stack effort combining software architecture, data modeling, UX research, and clinical safety.
           </p>
         </div>
@@ -156,30 +153,30 @@ export default function AboutPage() {
           {teamRoles.map((role, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2"
+              className="p-5 rounded-2xl bg-[#101714] border border-[#273830] space-y-3"
             >
-              <div className="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center font-bold text-xs">
-                {idx + 1}
+              <div className="w-8 h-8 rounded-lg bg-[#245B49]/30 border border-[#245B49]/50 text-[#72D8B0] flex items-center justify-center font-mono font-bold text-xs">
+                0{idx + 1}
               </div>
-              <h4 className="font-bold text-sm text-slate-200">{role.role}</h4>
-              <p className="text-slate-400 leading-relaxed">{role.focus}</p>
+              <h3 className="font-semibold text-sm text-[#F4F2EA]">{role.role}</h3>
+              <p className="text-[#A9C2AE] leading-relaxed">{role.focus}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[#273830] text-xs">
         <Link
           href="/contact"
-          className="text-teal-400 font-semibold hover:underline flex items-center gap-1.5"
+          className="text-[#72D8B0] font-medium hover:underline flex items-center gap-1.5"
         >
           <span>Next: Request a Demo or Contact the Team</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
         <Link
           href="/demo"
-          className="text-slate-400 hover:text-slate-200 transition-colors"
+          className="text-[#A9C2AE] hover:text-[#F4F2EA] transition-colors"
         >
           Test the Complete Solution in Demo Simulator →
         </Link>
@@ -187,3 +184,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
